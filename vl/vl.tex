@@ -1,0 +1,58 @@
+\input{../abv/lib/my}
+
+\newcommand{\myTitle}{Mitschrieb - Informatik A}
+\newcommand{\myAuthor}{Dominik Wille & Sarah Zewge}
+\newcommand{\myDate}{Wintersemester 2013/2014}
+\newcommand{\myTitleImage}{} %This Image is GNU GPL licenced.
+\newcommand{\myTitleLeft}{%
+   Freie Universität Berlin\\
+   Fachbereich für Informatik\\
+   Informatik A%
+}
+\newcommand{\myTitleRight}{%
+  Dozent: \\
+  Klaus Kriegel
+}
+
+\begin{document}
+\myTitlepage
+\section{Syntax und Semantik}
+\subsection{Repräsentation und Bedeutung von Information} \\
+\textbf{Definition Informatik (Broy):}\\
+\\
+ Wissenschaft Technik und Anwendung der maschinellen Verarbeitung, Speicherung und Übertragung von Information.
+
+\textbf{Information :}
+\begin{itemize}
+\item \textbf{äußere Gestalt} Repräsentation/Darstellung muss bestimmten Regeln genügen (\textbf{Syntax})
+\item \textbf{Bedeutung} Kern der Information (\textbf{Semantik})
+\end{itemize}
+
+\textbf{Informationssystem :}\\
+\\
+Besteht aus einer Menge von zulässigen Repräsentationen $R$ und einer Menge von abstrakten Informationen $A$, sowie einer Interpretation
+
+\begin{equation}
+I: R \rightarrow A
+\end{equation}
+
+\subsection{Natürliche Zahlen}
+\textbf{Peano - Axiome}
+\begin{enumerate}
+\item $0$ ist eine natürliche Zahl.
+\item Für jede natürliche Zahl $n$ gibt es einen eindeutigen Nachfolger $s(n)$, der auch eine natürliche Zahl ist.
+\item verschiedene natürliche Zahlen haben verschiedene Nachfolger.
+\item $0$ ist keine Nachfolger einer natürlichen Zahl.
+\item Die Menge $\mathbb{N}$ ist die kleinste\footnote{im Sinne der Inklusion} Menge, die 1-4 erfüllt.
+\end{enumerate}
+
+\textbf{Axiome}
+\begin{itemize}
+\item \textbf{Rekursion} Definitin von Operationen/Funktionen auf $\mathbb{N}$.
+\item \textbf{Induktion} Beweise, dass Aussagen auf allen $n \mathbb{N}$ gelten.
+\end{itemize}
+Rekursion besteht aus:
+\begin{enumerate}
+\item \textbf{Anker} Def von $f(0)$ (oder $f(0)$, $f(1)$,...,$f(n)$)
+\item \textbf{Rekusionsvorschrift} Definition von $f(n+1)$ aus $f(n)$
+\end{document}

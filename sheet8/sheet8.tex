@@ -1,0 +1,82 @@
+\documentclass[a4paper, parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\textbf{\LARGE Sarah Zewge und Dominik Wille - Freitags}
+  \section{Rekursion}
+\begin{verbatim}
+g :: Int -> Int
+g n = g_ n 3 [2, 1, 0]
+
+g_ :: Int -> Int -> [Int] -> Int
+g_ n k l
+  | (n < 3)   = n
+  | (n == k)  = g__ l
+  | otherwise = g_ n (k + 1) ([g__ l] ++ l) 
+
+g__ :: [Int] -> Int
+g__ (g1:g2:g3:l) = g1 + 2 * g2 - g3
+\end{verbatim}
+  \section{Tupel}
+\subsection*{a)}
+\begin{verbatim}
+pointOnLine (a, b) (m, n) = (b == m * a + n)
+pointOverLine (a, b) (m, n) = (b > m * a + n)
+\end{verbatim}
+\subsection*{b)}
+\begin{verbatim}
+lineThrough (a, b) (c, d)
+  | (a == c)  = error "That is not possible (x1 = x2)"
+  | (a < c)   = (((d - b) / (c - a)), (-((d - b) / (c - a)) * a + b))
+  | otherwise = lineThrough (c, d) (a, b)
+\end{verbatim}
+\subsection*{c)}
+\begin{verbatim}
+crossing (m, n) (o, p)
+  | (m == o)  =  error "That is not possible (Lines have the same slope)"
+  | otherwise = (((p - n) / (m - o)), ((p * m - n * o) / (m - o)))
+\end{verbatim}
+\subsection*{d)}
+\begin{verbatim}
+parallelThrough (m, n) (a, b) = (m, (-m * a + b))
+\end{verbatim}
+  \section{Binominialkoeffitienten}
+  \subsection*{a)}
+\begin{verbatim}
+factorial n 
+  | (n <= 1)  = 1
+  | otherwise = n * factorial (n - 1)  
+
+biomDef n k = (factorial n) / (factorial k) / (factorial (n - k))
+\end{verbatim}
+  \subsection*{b)}
+  \begin{align}
+    \binom{n - 1}{k} + \binom{n - 1}{k - 1} &= \frac{(n - 1)!}{k!(n - k - 1)!} + \frac{(n-1)!}{(k-1)!(n-k)!} \\
+    &= \frac{(n-1)!(n-k)}{k!(n-k)!} + \frac{(n-1)!k}{k!(n-k)!} \\
+    &= \frac{n(n-1)!}{k!(n-k)!} \\
+    &= \frac{n!}{(n-k)!} \\
+    &= \binom{n}{k} \quad \textbf{q.e.d.}
+  \end{align}
+  \subsection*{c)}
+\begin{verbatim}
+biomRec n k 
+  | (n == k || k == 0) = 1
+  | otherwise          = (biomRec (n - 1) k) + biomRec (n - 1) (k - 1)    
+\end{verbatim}
+\subsection*{d)}
+\begin{verbatim}
+countCalls n k = countCalls_ n k 0
+countCalls_ n k a
+  | (n == k || k == 0) = a + 1
+  | otherwise = (countCalls_ (n-1) k (a+1)) + countCalls_ (n-1) (k-1) (a+1) 
+\end{verbatim}
+Die Konstanten $c, d$ können beispielsweise beide $= 1$ gewählt werden. 
+\subsection*{e)}
+Um den Beweis möglichst einfach zu machen werde ich tatsächlich nur die geraden Therme von $n$ betrachten. Es sei dabei $2k= n$. Zeigen möchten wir, dass \verb+binomRec 2k k+ midestens $2^k$ Aufrufe hat.\\ \\
+\textbf{Induktionsanfang:} \\
+\verb+biomRec 0 0+ hat einen Aufruf \\\\
+\textbf{Induktionsschritt:}\\
+\verb§biomRec 2(k + 1) (k + 1)§ Macht auf jeden Fall zwei Aufrufe auf \verb§biomRec 2k k§ und hat daher midestens doppelt so viele Aufrufe wie  \verb§biomRec 2k k§. Das heißt die Aufrufe steigen midestens exponentiell mit $k$. \textbf{q.e.d.}\ \\ \\
+
+\end{document}
