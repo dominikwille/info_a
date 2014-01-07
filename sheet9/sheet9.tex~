@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 
 \begin{document}
-\textbf{\LARGE 9 - Sarah Zewge und Dominik Wille - Freitags}
+\textbf{\LARGE Sheet 9 - Sarah Zewge und Dominik Wille - Freitags}
   \section{Rekursion}
 \begin{verbatim}
 -- Aufgabe 1:
@@ -51,8 +51,7 @@ maxList (a, b)
   | ((length a) < (length b)) = maxList_ a b
   | otherwise                 = maxList_ b a
 
-maxList_ a b = (subR (length a) (selSort (a ++ (subL (length a) b)))) 
-  ++ (subR ((length b) - (length a)) b)
+maxList_ a b = (subR (length a) (selSort (a ++ (subL (length a) b)))) ++ (subR ((length b) - (length a)) b)
 
 -- Aufgabe 3b:
 maxListOfLists a b
@@ -61,4 +60,3 @@ maxListOfLists a b
 
 maxListOfLists_ a b = (map maxList (zip a b)) ++ subR (length b - length a) b
 \end{verbatim}
-\end{document}
