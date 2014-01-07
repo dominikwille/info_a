@@ -43,6 +43,7 @@ subL_ x (e:o) n
 reflect l
   | (l == []) = []
   | otherwise = reflect_ l []
+
 reflect_ (x:xs) l 
   | (xs == []) = [x] ++ l
   | otherwise  = reflect_ xs ([x] ++ l)
