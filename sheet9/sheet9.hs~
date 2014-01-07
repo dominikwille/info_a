@@ -1,0 +1,6 @@
+first x:xs = x
+fastFib x = first(fibList x)
+fibList x = fibList_ (x - 2) [0,1]
+fibList_ x (a:b:l)
+  | (x > 0)   = bibList (x-1) ([a+b] ++ [a] ++ [b] ++ l)
+  | otherwise = [a] ++ [b] ++ l
